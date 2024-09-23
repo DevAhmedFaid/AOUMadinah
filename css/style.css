@@ -9734,6 +9734,7 @@ h6,
 
 .btn {
   font-family: 'Jost', sans-serif;
+  border-radius: 5px;
 }
 
 .btn-square {
