@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Club Questionnaire</title>
+    <meta charset="utf-8">
+    <title>اختبار اليوم الوطني</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Ahmed Faid" name="keywords">
+    <meta content="Ahmed Faid" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            height: 100%;
             background-color: #f4f4f4;
         }
         .container {
@@ -18,6 +38,24 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Flexbox container for the whole page */
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Content will fill the remaining space */
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
         h1 {
             text-align: center;
@@ -38,34 +76,140 @@
         .results {
             margin-top: 20px;
         }
+        /* Footer styling */
+        .footer {
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Computer Club Questionnaire</h1>
+    <div class="wrapper">
+      <!-- Navbar Start -->
+      <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+            <a href="index.html" class="navbar-brand ml-lg-3">
+                <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-3"></i>Computer Club</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <!-- <a href="#.html" class="nav-item nav-link">About</a>
+                    <a href="#.html" class="nav-item nav-link">Contact</a> -->
+                </div>
+                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
+            </div>
+        </nav>
+        </div>
+        <!-- Navbar End -->
 
-        <!-- Button to generate 3 questions -->
-        <button id="startQuiz">Start Quiz</button>
+        <div class="content">
+            <div class="container">
+                <h1>Computer Club Questionnaire</h1>
 
-        <!-- Dynamic form will be inserted here -->
-        <form id="quizForm" style="display:none;">
-            <div id="questions"></div>
-            <button type="submit">Submit</button>
-            <a href="index.html" class="btn btn-primary py-2 px-4 d-none d-lg-block">Back to home page</a>
-        </form>
+                <!-- Button to generate 3 questions -->
+                <button id="startQuiz">Start Quiz</button>
 
-        <div class="results" id="results"></div>
+                <!-- Dynamic form will be inserted here -->
+                <form id="quizForm" style="display:none;">
+                    <div id="questions"></div>
+                    <button type="submit">Submit</button>
+                    <hr>
+                    <a href="index.html" class="btn btn-primary py-2 px-4 d-none d-lg-block">Back to home page</a>
+                </form>
+
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="footer">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                        <p class="m-0">Copyright &copy; <a class="text-white" href="#">AOU Computer Club Team Madinah</a>. All Rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-right">
+                        <p class="m-0">Designed by <a class="text-white" href="https://AhmedFaid.com">💻ِAhmed Faid</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
     </div>
-
     <script>
-        // Array of questions
+        // Array of questions with four choices, including the correct answer
         const questionPool = [
-            { question: "Do you enjoy programming?", name: "question1" },
-            { question: "Have you ever built a website before?", name: "question2" },
-            { question: "Are you interested in AI?", name: "question3" },
-            { question: "Do you like problem-solving?", name: "question4" },
-            { question: "Are you familiar with robotics?", name: "question5" },
-            { question: "Have you ever coded in Python?", name: "question6" }
+            { 
+                question: "ماهي عاصمة المملكة العربية السعودية ؟", 
+                name: "السؤال الأول", 
+                choices: ["جدة", "الدمام", "الرياض", "مكة المكرمة"],
+                correct: "الرياض"
+            },
+            { 
+                question: "اين يقع مطار الملك خالد الدولي ؟", 
+                name: "السؤال الثاني", 
+                choices: ["جدة", "الرياض", "الدمام", "المدينة المنورة"],
+                correct: "الرياض"
+            },
+            { 
+                question: "كم عدد ركعات صلاة التراويح في الحرم المكي خلال شهر رمضان ؟", 
+                name: "السؤال الثالث", 
+                choices: ["٨ ركعات", "١٠ ركعات", "٢٠ ركعة", "١٥ ركعة"],
+                correct: "٢٠ ركعة"
+            },
+            { 
+                question: "ماهو اول مسجد في الاسلام ؟", 
+                name: "السؤال الرابع", 
+                choices: ["المسجد الحرام", "المسجد النبوي", "مسجد قباء", "المسجد الأقصى"],
+                correct: "مسجد قباء"
+            },
+            { 
+                question: "متى تم توحيد المملكة العربية السعودية ؟", 
+                name: "السؤال الخامس", 
+                choices: ["1925", "1932", "1945", "1950"],
+                correct: "1932"
+            },
+            { 
+                question: "في اي قارة تقع المملكة العربية السعودية ؟", 
+                name: "السؤال السادس", 
+                choices: ["اسيا", "اوروبا", "أفريقيا", "امريكا الجنوبية"],
+                correct: "اسيا"
+            },
+            {
+                question: "ما هو اطول وادي في المملكة العربية السعودية ؟", 
+                name: "السؤال السابع", 
+                choices: ["وادي الدواسر", "وادي الرمة", "وادي حنيفة", "وادي فاطمة"],
+                correct: "وادي الرمة"
+            },
+            { 
+                question: "ماهي اكبر مدينة من حيث المساحه في السعودية ؟", 
+                name: "السؤال الثامن", 
+                choices: ["مكة المكرمة", "الرياض", "الدمام", "المدينة المنورة"],
+                correct: "الرياض"
+            },
+            { 
+                question: "كم عدد المناطق الإدارية في  السعودية ؟", 
+                name: "السؤال التاسع", 
+                choices: ["10", "13", "15", "17"],
+                correct: "13"
+            },
+            { 
+                question: "ماهو اعلى جبل في المملكة العربية السعودية ؟", 
+                name: "السؤال العاشر", 
+                choices: ["جبل احد", "جبل النور", "جبل طويق", "جبل السودة"],
+                correct: "جبل السودة"
+            }
         ];
 
         // Function to shuffle and select 3 questions
@@ -80,11 +224,12 @@
             questionsContainer.innerHTML = "";  // Clear any existing questions
 
             questions.forEach((q, index) => {
-                const questionHTML = `
-                    <label>${index + 1}. ${q.question}</label>
-                    <input type="radio" name="${q.name}" value="Yes"> Yes
-                    <input type="radio" name="${q.name}" value="No"> No
-                `;
+                let questionHTML = `<label>${index + 1}. ${q.question}</label>`;
+                q.choices.forEach(choice => {
+                    questionHTML += `
+                        <input type="radio" name="${q.name}" value="${choice}"> ${choice}<br>
+                    `;
+                });
                 questionsContainer.innerHTML += questionHTML;
             });
         }
@@ -102,17 +247,24 @@
         document.getElementById("quizForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
-            // Collect answers
             const results = [];
+            let correctAnswers = 0;
+
             questionPool.forEach((q) => {
                 const answer = document.querySelector(`input[name="${q.name}"]:checked`);
                 if (answer) {
-                    results.push(`${q.question} <strong>${answer.value}</strong>`);
+                    const isCorrect = answer.value === q.correct;
+                    if (isCorrect) correctAnswers++;
+                    results.push(`${q.question} <strong>${answer.value}</strong> (${isCorrect ? "Correct" : "Wrong, correct answer: " + q.correct})`);
                 }
             });
 
             // Display results
-            document.getElementById("results").innerHTML = `<h3>Results</h3><p>${results.join('</p><p>')}</p>`;
+            document.getElementById("results").innerHTML = `
+                <h3>Results</h3>
+                <p>${results.join('</p><p>')}</p>
+                <h4>Total Correct: ${correctAnswers}/3</h4>
+            `;
         });
     </script>
 </body>
